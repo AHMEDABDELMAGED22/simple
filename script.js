@@ -73,7 +73,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (link.getAttribute("data-target") === id) {
                         link.classList.add("active");
                         // Scroll the TOC navigation smoothly so active item is visible
-                        link.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        // Only do this on desktop layout to prevent auto-scrolling to the top on mobile
+                        if (window.innerWidth > 1024) {
+                            link.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }
                     }
                 });
             }
