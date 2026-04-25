@@ -96,6 +96,81 @@ document.addEventListener("DOMContentLoaded", () => {
     // Highlight the first link by default
     if(tocLinks.length > 0) tocLinks[0].classList.add("active");
 
+    // --- Progress Tracker & Interactive Checkboxes ---
+    const sidebarHeader = document.querySelector('.sidebar-header');
+    const progressContainer = document.createElement('div');
+    progressContainer.className = 'progress-container glass-panel';
+    progressContainer.innerHTML = `
+        <div class="progress-info">
+            <span>نسبة الإنجاز:</span>
+            <span id="progress-text">0%</span>
+        </div>
+        <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="progress-fill"></div>
+        </div>
+    `;
+    
+    // Insert progress tracker right after the sidebar header
+    if (sidebarHeader) {
+        sidebarHeader.parentNode.insertBefore(progressContainer, sidebarHeader.nextSibling);
+    }
+
+    function updateProgress() {
+        const allCb = contentDiv.querySelectorAll('input[type="checkbox"]');
+        if(allCb.length === 0) {
+            progressContainer.style.display = 'none';
+            return;
+        }
+        progressContainer.style.display = 'block';
+        const checkedCb = contentDiv.querySelectorAll('input[type="checkbox"]:checked');
+        const percentage = Math.round((checkedCb.length / allCb.length) * 100);
+        const progressText = document.getElementById('progress-text');
+        const progressFill = document.getElementById('progress-fill');
+        if (progressText && progressFill) {
+            progressText.innerText = percentage + '%';
+            progressFill.style.width = percentage + '%';
+        }
+    }
+
+    // Convert marked.js generated checkboxes into interactive ones
+    const checkboxes = contentDiv.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach((cb, index) => {
+        cb.removeAttribute('disabled');
+        cb.id = 'task-cb-' + index;
+        
+        const li = cb.closest('li');
+        if(li) {
+            li.classList.add('task-item');
+            const label = document.createElement('label');
+            label.htmlFor = cb.id;
+            label.className = 'task-label';
+            // Move all contents of li (after checkbox) into the label
+            while(cb.nextSibling) {
+                label.appendChild(cb.nextSibling);
+            }
+            li.appendChild(label);
+            
+            // Load saved state from localStorage
+            const isChecked = localStorage.getItem('task-cb-' + index) === 'true';
+            cb.checked = isChecked;
+            if(isChecked) li.classList.add('completed');
+            
+            cb.addEventListener('change', (e) => {
+                localStorage.setItem('task-cb-' + index, e.target.checked);
+                if(e.target.checked) {
+                    li.classList.add('completed');
+                } else {
+                    li.classList.remove('completed');
+                }
+                updateProgress();
+            });
+        }
+    });
+    
+    // Initial calculation
+    updateProgress();
+    // -------------------------------------------------
+
     // Theme Toggle Functionality
     const themeToggle = document.getElementById("theme-toggle");
     const body = document.body;

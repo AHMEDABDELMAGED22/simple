@@ -792,3 +792,26 @@ AI لا يبتكر Architecture جديدة. AI يُعيد توليد ما رآه
 [^43^]: AWS Free Tier: What You Can Build Without Spending a Dime — Jeevi Academy, Sep 2025. 12-month free tier details.
 [^44^]: Unifonic Careers — Remote DevOps positions in Cairo, Riyadh, Amman.
 [^48^]: GitHub Copilot & DevOps in 2025: AI-Powered Efficiency — Medium, May 2025. Terraform and Jenkinsfile generation.
+
+---
+
+## خطة العمل التفاعلية ومسار المذاكرة
+
+استخدم هذه الخطة لتتبع تقدمك. يتم حفظ تقدمك تلقائياً في المتصفح!
+
+### 1. أساسيات التكنولوجيا والبرمجة
+- [ ] **أساسيات Linux والشبكات:** (المصدر: مسارات مجانية مقدمة من KodeKloud أو كتب تقنية).
+- [ ] **لغة Python:** (المصدر: مسار "Python Fundamentals" أو "Data Engineer in Python" على DataCamp).
+- [ ] **نظام Git و GitHub:** (المصدر: مسار "Introduction to Git" على DataCamp أو قنوات يوتيوب مثل Programming with Mosh).
+
+### 2. الحوسبة السحابية (Cloud Computing)
+- [ ] **شهادة AWS Cloud Practitioner:** (المصدر: مسار "AWS Cloud Technology and Services" وتغطية مفاهيم الكلاود على DataCamp).
+- [ ] **تطبيق عملي على AWS:** إنشاء خادم EC2 ورفع موقع ثابت على S3 (تطبيق عملي لتثبيت المفاهيم).
+
+### 3. الحاويات (Containerization)
+- [ ] **تعلم Docker:** (المصدر: مسار "Introduction to Docker" على DataCamp).
+- [ ] **تعلم Kubernetes:** (المصدر: كورس للمبتدئين من TechWorld with Nana أو تطبيق KodeKloud).
+
+### 4. الأتمتة والبنية التحتية (CI/CD & IaC)
+- [ ] **أساسيات CI/CD:** (المصدر: مسار "CI/CD Concepts" على DataCamp أو توثيق GitHub Actions).
+- [ ] **تعلم Terraform:** (المصدر: دورة Terraform للمبتدئين على يوتيوب من freeCodeCamp أو مسار على KodeKloud).

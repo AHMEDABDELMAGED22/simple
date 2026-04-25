@@ -445,3 +445,105 @@ body {
         font-size: 1.05rem;
     }
 }
+
+/* Progress Tracker Styles */
+.progress-container {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border-radius: 16px;
+    background: var(--glass-bg);
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
+
+.progress-bar-bg {
+    width: 100%;
+    height: 10px;
+    background: rgba(120, 120, 120, 0.2);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: var(--accent-color);
+    width: 0%;
+    border-radius: 5px;
+    transition: width 0.4s ease;
+    box-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* Interactive Checkboxes Styles */
+.task-item {
+    list-style-type: none;
+    margin-bottom: 1rem !important;
+    display: flex;
+    align-items: center;
+    padding: 0.8rem;
+    border-radius: 12px;
+    background: rgba(120, 120, 120, 0.05);
+    border: 1px solid var(--glass-border);
+    transition: all 0.3s ease;
+}
+
+.task-item.completed {
+    opacity: 0.6;
+    background: rgba(16, 185, 129, 0.1);
+    border-color: rgba(16, 185, 129, 0.3);
+}
+
+.task-item.completed .task-label {
+    text-decoration: line-through;
+    color: var(--text-secondary);
+}
+
+.task-item input[type="checkbox"] {
+    appearance: none;
+    background-color: transparent;
+    margin-left: 1rem;
+    font: inherit;
+    color: currentColor;
+    width: 1.5em;
+    height: 1.5em;
+    border: 2px solid var(--accent-color);
+    border-radius: 0.25em;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.task-item input[type="checkbox"]::before {
+    content: "";
+    width: 0.8em;
+    height: 0.8em;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--bg-color);
+    transform-origin: center;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    background-color: white;
+}
+
+.task-item input[type="checkbox"]:checked {
+    background-color: var(--accent-color);
+}
+
+.task-item input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
+.task-label {
+    cursor: pointer;
+    font-size: 1.1rem;
+    flex-grow: 1;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+}
